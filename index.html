@@ -332,7 +332,7 @@ body.still .donut .arc{transition:none}
         <span>G1 คะแนนช่วงแรก</span><span>G2 คะแนนช่วงที่สอง</span>
       </div>
       <div class="grid2" data-a style="--d:300ms">
-        <div class="card plain"><h3>ทำไมจึงคัดออก</h3><p class="sub" style="font-size:13.5px;margin-top:7px">รายงานต้นฉบับระบุเพียงว่า “ได้มีการคัดเลือกตัวแปร” แล้วนำ 11 ตัวที่เหลือเข้าตัวแบบ — เอกสารนี้คงไว้ตามต้นฉบับ ไม่ได้เพิ่มเกณฑ์ขึ้นเอง</p></div>
+        <div class="card plain"><h3>การคัดเลือกตัวแปร</h3><p class="sub" style="font-size:13.5px;margin-top:7px">ได้มีการคัดเลือกตัวแปร แล้วนำ 11 ตัวที่เหลือเข้าตัวแบบ</p></div>
         <div class="card plain"><h3>จุดที่ควรระวังในการตีความ</h3><p class="sub" style="font-size:13.5px;margin-top:7px">การคัดตัวแปรออกย่อมมีผลต่อค่า R² และต่อการเปรียบเทียบกับงานอื่นที่ใช้ตัวแปรชุดอื่น ตัวเลขทั้งหมดในนี้จึงใช้ได้เฉพาะกับตัวแบบนี้</p></div>
       </div>
       <div class="strip" data-a style="--d:400ms"><b>ผลต่อการอ่านผลลัพธ์ · </b>ตัวแปรที่คัดออกจะไม่ปรากฏในตารางสัมประสิทธิ์ จึงไม่ถูกตีความในรายงานฉบับนี้</div>
@@ -427,7 +427,7 @@ body.still .donut .arc{transition:none}
   <section class="slide" id="s11" data-tag="ข้อ 11 · แปลความหมาย">
     <div class="head">
       <div class="eyebrow" data-a style="--d:0ms">ข้อ 11 · แปลความหมาย</div>
-      <h2 data-a style="--d:60ms">อ่านค่าสัมประสิทธิ์เป็นภาษาคน</h2>
+      <h2 data-a style="--d:60ms">วิเคราะห์ค่าสัมประสิทธิ์</h2>
       <div class="rule" data-a style="--d:120ms"></div>
     </div>
     <div class="body">
@@ -475,7 +475,7 @@ body.still .donut .arc{transition:none}
       </div>
       <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;justify-content:center">
         <div class="card plain" data-a style="--d:250ms"><h3 style="font-size:14.5px">Residuals vs Fitted — ยอมรับได้</h3><p class="sub" style="font-size:12.5px;margin-top:4px">จุดกระจายรอบเส้นศูนย์ ไม่พบความโค้งชัดเจน แต่มีบางจุดที่ส่วนเหลือติดลบมาก = ทำนายสูงเกินจริงสำหรับนักเรียนบางคน</p></div>
-        <div class="card plain" data-a style="--d:310ms"><h3 style="font-size:14.5px">Normal Q-Q — ไม่ปกติเต็มที่</h3><p class="sub" style="font-size:12.5px;margin-top:4px">จุดส่วนใหญ่เรียงใกล้เส้นตรง แต่ปลายล่างเบี่ยงออกชัดเจน → ส่วนเหลือมีหางซ้ายยาว</p></div>
+        <div class="card plain" data-a style="--d:310ms"><h3 style="font-size:14.5px">Normal Q-Q — ข้อสมมติการแจกแจงปกติอาจไม่สมบูรณ์</h3><p class="sub" style="font-size:12.5px;margin-top:4px">จุดส่วนใหญ่เรียงใกล้เส้นตรง แต่ปลายล่างเบี่ยงออกชัดเจน → ส่วนเหลือมีหางซ้ายยาว</p></div>
         <div class="card plain" data-a style="--d:370ms"><h3 style="font-size:14.5px">Scale-Location — แปรปรวนไม่คงที่เล็กน้อย</h3><p class="sub" style="font-size:12.5px;margin-top:4px">การกระจายค่อนข้างสม่ำเสมอ แต่มีบางจุดสูงเด่น จึงยังไม่รุนแรง</p></div>
         <div class="card plain" data-a style="--d:430ms"><h3 style="font-size:14.5px">Residuals vs Leverage — ไม่มีจุดอิทธิพลรุนแรง</h3><p class="sub" style="font-size:12.5px;margin-top:4px">มีจุดที่ leverage ค่อนข้างสูงและบางจุดส่วนเหลือมาตรฐานต่ำมาก แต่ไม่มีจุดใดเกินเส้น Cook’s distance</p></div>
       </div>
@@ -506,9 +506,9 @@ body.still .donut .arc{transition:none}
       </div>
       <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;justify-content:center">
         <div class="card" data-a style="--d:250ms;background:var(--accent-soft);border-color:#cfe6e0">
-          <h3>สรุปผล</h3><p class="sub" style="font-size:13.5px;margin-top:6px">ตัวแบบมีนัยสำคัญโดยรวม (p &lt; 0.05) โดยตัวแปรที่ส่งผลชัดเจนที่สุดคือ <b>ประวัติสอบตก</b> (ลบ) รองลงมาคือ <b>โรงเรียน</b> (ลบ) และ <b>เป้าหมายเรียนต่อ</b> (บวก)</p>
+          <h3>สรุปผล</h3><p class="sub" style="font-size:13.5px;margin-top:6px">ตัวแบบมีนัยสำคัญโดยรวม (p-value &lt; 0.05) โดยตัวแปรที่ส่งผลชัดเจนที่สุดคือ <b>ประวัติสอบตก</b> (ลบ) รองลงมาคือ <b>โรงเรียน</b> (ลบ) และ <b>เป้าหมายเรียนต่อ</b> (บวก)</p>
         </div>
-        <div class="card plain" data-a style="--d:310ms"><h3>ข้อจำกัด</h3><p class="sub" style="font-size:13px;margin-top:6px">ส่วนเหลือไม่ปกติเต็มที่ (หางซ้ายยาว) · ความแปรปรวนไม่คงที่เล็กน้อย · อธิบายคะแนนได้ 31.05% เท่านั้น</p></div>
+        <div class="card plain" data-a style="--d:310ms"><h3>ข้อจำกัด</h3><p class="sub" style="font-size:13px;margin-top:6px">ข้อสมมติการแจกแจงปกติอาจไม่สมบูรณ์ (ส่วนเหลือหางซ้ายยาว) · ความแปรปรวนไม่คงที่เล็กน้อย · อธิบายคะแนนได้ 31.05% เท่านั้น</p></div>
         <div class="card plain" data-a style="--d:370ms"><h3>ข้อสังเกตของทีม</h3><p class="sub" style="font-size:13px;margin-top:6px">ตัวแบบนี้ไม่ได้ใช้ G1 และ G2 (คะแนนระหว่างภาค) จึงอธิบายคะแนนปลายภาคได้ราว 1 ใน 3 — หากนำมาใช้ในงานถัดไป น่าจะเพิ่มความสามารถในการอธิบายได้</p></div>
       </div>
     </div>
