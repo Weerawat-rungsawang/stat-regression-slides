@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th" data-style="lab">
+<html lang="th" data-style="net">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -172,6 +172,7 @@ body.still .donut .arc{transition:none}
 .bars{max-width:1140px;width:100%;margin:0 auto}
 .bar .track i{min-width:2px}
 
+.netwrap{display:none}
 #themebar{position:fixed;left:50%;bottom:52px;transform:translateX(-50%);display:flex;gap:7px;align-items:center;
   background:rgba(12,17,22,.88);color:#fff;font-size:12.5px;padding:8px 14px;border-radius:999px;z-index:70;
   opacity:0;pointer-events:none;transition:opacity .25s ease}
@@ -265,26 +266,190 @@ html[data-style="minimal"] table.coef tr.hl td{background:transparent}
 html[data-style="minimal"] table.coef tr.hl td:first-child{font-weight:700}
 html[data-style="minimal"] #chrome{border-top:1px solid var(--line)}
 
+/* ================= STYLE PACK · mag (จัดวางแบบนิตยสาร — เนื้อหาเดิม) ================= */
+html[data-style="mag"]{--bg:#0b1220;--ink:#eaf1f8;--ink2:#c7d3e2;--muted:#9aabc2;--faint:#7a8ba3;
+  --line:#22304a;--card:#131d2f;--card2:#182338;--accent:#2fd4b2;--accent-soft:#12303a;--accent-line:#1e4a56;
+  --accent-dark:#7ff0d8;--accent-mid:#2aa189;--accent-soft2:#153a44;--accent-light:#7ff0d8;--track:#1e2942;
+  --pos:#2fd4b2;--neg:#ff6b5e;--nbar:#3b4a63}
+html[data-style="mag"] body{background:#060b13}
+html[data-style="mag"] #stage{box-shadow:0 24px 70px rgba(0,0,0,.8),0 0 0 1px #1b2740}
+/* --- shared: tighter canvas, vertical rail, corner titles --- */
+html[data-style="mag"] .slide{padding:32px 34px 52px}
+html[data-style="mag"] .slide::before{content:attr(data-num);position:absolute;left:13px;top:50%;
+  transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;letter-spacing:4px;color:#3f5a7a}
+html[data-style="mag"] .eyebrow{font-family:'IBM Plex Mono',monospace;letter-spacing:1.2px;color:var(--accent)}
+html[data-style="mag"] :is(#s02,#s03,#s08,#s11,#s13,#s14) .head{position:absolute;top:30px;right:36px;
+  align-items:flex-end;text-align:right;margin:0;max-width:560px}
+html[data-style="mag"] :is(#s02,#s03,#s08,#s11,#s13,#s14) .body{margin-top:104px}
+html[data-style="mag"] .head .rule{width:100%;height:1px}
+html[data-style="mag"] .stat b,html[data-style="mag"] .icard b,html[data-style="mag"] table.coef td,
+html[data-style="mag"] #pageno{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+html[data-style="mag"] .card,html[data-style="mag"] .stat,html[data-style="mag"] .icard{background:#131d2f;border-color:#22304a}
+html[data-style="mag"] .strip{background:#12303a;border-color:#1e4a56;color:#a9f0e0}
+html[data-style="mag"] .strip b{color:#7ff0d8}
+html[data-style="mag"] .fig{background:#fff;border-color:#2b3b58}
+html[data-style="mag"] .figcap{background:#131d2f;color:#9aabc2;border-top-color:#22304a}
+html[data-style="mag"] .chips span{background:#131d2f;border-color:#22304a;color:#c7d3e2;font-size:13px;padding:6px 11px}
+html[data-style="mag"] .legend div{color:#c7d3e2}
+html[data-style="mag"] .bar .track{background:#16223a}
+html[data-style="mag"] table.coef td{border-bottom-color:#1c2740}
+html[data-style="mag"] table.coef tr.hl td{background:#12303a}
+html[data-style="mag"] #chrome{border-top-color:#22304a}
+
+/* 01 · cover: title bottom-left, members on the baseline, ghost year top-right */
+html[data-style="mag"] .slide.cover{padding:0 46px;justify-content:flex-end}
+html[data-style="mag"] .cover .mark{width:120px;height:4px}
+html[data-style="mag"] .cover .members{margin-top:22px;padding-top:16px;gap:56px}
+html[data-style="mag"] .cover::after{content:'2008';position:absolute;top:34px;right:40px;font-family:'IBM Plex Mono',monospace;
+  font-size:104px;line-height:1;color:rgba(47,212,178,.09);letter-spacing:-4px}
+
+/* 02 · hero numbers across the full width */
+html[data-style="mag"] #s02 .stats{grid-template-columns:repeat(3,1fr);gap:0;margin-top:10px}
+html[data-style="mag"] #s02 .stat{background:transparent;border:0;border-left:1px solid #22304a;border-radius:0;padding:6px 26px}
+html[data-style="mag"] #s02 .stat:first-child{border-left:0;padding-left:0}
+html[data-style="mag"] #s02 .stat b{font-size:82px;letter-spacing:-3px}
+html[data-style="mag"] #s02 p.sub{max-width:880px;margin:0;text-align:left}
+
+/* 03 · split: big ghost year left, text right, facts along the floor */
+html[data-style="mag"] #s03 .grid2{grid-template-columns:1fr;gap:14px}
+html[data-style="mag"] #s03 .card{border-radius:0;background:transparent;border:0;border-top:1px solid #22304a;padding:14px 0 0}
+html[data-style="mag"] #s03 .grid3{border-top:1px solid #22304a;padding-top:14px}
+
+/* 04 · narrow left column of R commands, three cards on the right */
+html[data-style="mag"] #s04{padding-left:26px;padding-right:26px}
+html[data-style="mag"] #s04 .grid3{grid-template-columns:repeat(3,1fr)}
+html[data-style="mag"] #s04 .card[data-a]{border-radius:0}
+
+/* 05 / 06 · chip walls with a side column */
+html[data-style="mag"] #s05 .chips span,html[data-style="mag"] #s06 .chips span{border-radius:0}
+html[data-style="mag"] #s05 .grid2{grid-template-columns:repeat(2,1fr)}
+html[data-style="mag"] #s06 .grid2{grid-template-columns:1fr 1fr}
+
+/* 07 · figures bleed wider, r-values as hairline facts */
+html[data-style="mag"] #s07{padding-left:26px;padding-right:26px}
+html[data-style="mag"] #s07 .card{background:transparent;border:0;border-left:2px solid var(--accent);border-radius:0;padding:4px 0 4px 12px}
+
+/* 08 · hero equation, small notes under it */
+html[data-style="mag"] #s08 .eq{border:0;background:transparent;padding:0}
+html[data-style="mag"] #s08 .eq .main{font-size:30px}
+
+/* 09 · full-width table, hairline rules only */
+html[data-style="mag"] #s09{padding-left:24px;padding-right:24px}
+html[data-style="mag"] #s09 .head{margin-bottom:12px}
+html[data-style="mag"] table.coef th{border-bottom:1px solid #2c3d5c}
+
+/* 10 · chart edge to edge, taller bars */
+html[data-style="mag"] #s10{padding-left:24px;padding-right:24px}
+html[data-style="mag"] #s10 .bars{max-width:100%}
+html[data-style="mag"] #s10 .bar .track{height:20px}
+
+/* 11 · mosaic: one wide card + four smaller */
+html[data-style="mag"] #s11 .icards{grid-template-columns:1.55fr 1fr 1fr;grid-template-rows:1fr 1fr}
+html[data-style="mag"] #s11 .icard:first-child{grid-row:span 2;justify-content:flex-end}
+html[data-style="mag"] #s11 .icard{border-radius:0;border-left-width:3px}
+html[data-style="mag"] #s11 .icard b{font-size:30px}
+
+/* 12 · figure left, notes as hairline rows right */
+html[data-style="mag"] #s12 .card{border-radius:0;background:transparent;border:0;border-left:2px solid #2c3d5c;padding:6px 0 6px 12px}
+
+/* 13 · oversized donut, summary as hairline rows */
+html[data-style="mag"] #s13 .donut svg{width:250px;height:250px}
+html[data-style="mag"] #s13 .card{border-radius:0}
+html[data-style="mag"] #s13 .card.plain{background:transparent;border:0;border-top:1px solid #22304a;padding:12px 0 0}
+
+/* 14 · closing: full-width baseline strip */
+html[data-style="mag"] .closing h1{font-size:46px}
+html[data-style="mag"] .closing .members{width:100%;justify-content:space-between}
+
+/* ================= STYLE PACK · net (แผนผังความเชื่อมโยง — เนื้อหาเดิม) ================= */
+html[data-style="net"]{--bg:#08111d;--ink:#eaf1f8;--ink2:#c7d3e2;--muted:#9aabc2;--faint:#7a8ba3;
+  --line:#1d2b44;--card:#0f1a2c;--card2:#132038;--accent:#4de2c0;--accent-soft:#0e2d3a;--accent-line:#1c4655;
+  --accent-dark:#8df3dd;--accent-mid:#2aa189;--accent-soft2:#123a48;--accent-light:#8df3dd;--track:#16233c;
+  --pos:#4de2c0;--neg:#ff7a63;--nbar:#39506f}
+html[data-style="net"] body{background:#04090f}
+html[data-style="net"] #stage{box-shadow:0 24px 70px rgba(0,0,0,.85),0 0 0 1px #182642;
+  background-image:radial-gradient(circle,rgba(120,190,220,.11) 1px,transparent 1px);background-size:22px 22px}
+html[data-style="net"] .netwrap{display:block}
+html[data-style="net"] .netwrap svg{width:100%;height:100%;overflow:visible}
+html[data-style="net"] .netlegend{position:absolute;left:-40px;right:-40px;bottom:-30px;text-align:center;font-size:12.5px;color:var(--muted)}
+html[data-style="net"] .edge{stroke-linecap:round}
+html[data-style="net"] .edge.pos{stroke:var(--pos)}
+html[data-style="net"] .edge.neg{stroke:var(--neg)}
+html[data-style="net"] .edge.ns{stroke:var(--nbar);stroke-dasharray:3 4}
+html[data-style="net"] .nd{fill:#08111d;stroke-width:2}
+html[data-style="net"] .nd.pos{stroke:var(--pos)}
+html[data-style="net"] .nd.neg{stroke:var(--neg)}
+html[data-style="net"] .nd.ns{stroke:var(--nbar)}
+html[data-style="net"] .core{fill:var(--accent)}
+html[data-style="net"] .nlab{font-family:'IBM Plex Mono',monospace;font-size:12px;fill:var(--ink2)}
+html[data-style="net"] .rlab{font-family:'IBM Plex Mono',monospace;font-size:11.5px;fill:var(--muted)}
+html[data-style="net"] .corelab{font-family:'IBM Plex Sans Thai',sans-serif;font-size:14px;font-weight:700;fill:#04140f}
+/* headings become a node + connector */
+html[data-style="net"] .eyebrow{font-family:'IBM Plex Mono',monospace;letter-spacing:1px}
+html[data-style="net"] .eyebrow::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:var(--accent);margin-right:8px;vertical-align:middle}
+html[data-style="net"] .head .rule{height:2px;background:linear-gradient(90deg,var(--accent),transparent);width:180px}
+/* cards become nodes */
+html[data-style="net"] .card,html[data-style="net"] .stat,html[data-style="net"] .icard{position:relative;
+  background:#0f1a2c;border-color:#22405c;border-left:2px solid var(--accent-line)}
+html[data-style="net"] .card::before,html[data-style="net"] .stat::before,html[data-style="net"] .icard::before{
+  content:'';position:absolute;left:-6px;top:16px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+html[data-style="net"] .icard.neg::before{background:var(--neg)}
+html[data-style="net"] .stat b,html[data-style="net"] .icard b,html[data-style="net"] table.coef td,
+html[data-style="net"] #pageno{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+html[data-style="net"] .strip{background:#0e2d3a;border-color:#1c4655;color:#a9f0e0}
+html[data-style="net"] .strip b{color:#8df3dd}
+html[data-style="net"] .fig{background:#fff;border-color:#2b4a68}
+html[data-style="net"] .figcap{background:#0f1a2c;color:#9aabc2;border-top-color:#22405c}
+html[data-style="net"] .chips span{background:#0f1a2c;border-color:#22405c;color:#c7d3e2}
+html[data-style="net"] .legend div{color:#c7d3e2}
+html[data-style="net"] table.coef td{border-bottom-color:#1a2b45}
+html[data-style="net"] table.coef tr.hl td{background:#0e2d3a}
+html[data-style="net"] #chrome{border-top-color:#1d2b44}
+/* bars become weighted edges with an end node */
+html[data-style="net"] #s10 .bar .track{background:#101d33;border-radius:2px}
+html[data-style="net"] #s10 .bar .track i{border-radius:999px;top:5px;bottom:5px}
+html[data-style="net"] #s10 .bar .track i::after{content:'';position:absolute;top:50%;transform:translateY(-50%);
+  width:10px;height:10px;border-radius:50%}
+html[data-style="net"] #s10 .bar:not(.neg) .track i::after{right:-5px;background:var(--pos)}
+html[data-style="net"] #s10 .bar.neg .track i::after{left:-5px;background:var(--neg)}
+html[data-style="net"] #s10 .bar.ns .track i::after{background:var(--nbar)}
+html[data-style="net"] #s10 .bar .track::before{background:#39506f}
+/* cover + slide 8 + slide 7 compositions */
+html[data-style="net"] .slide.cover{padding:0 54px;padding-right:600px;justify-content:center}
+html[data-style="net"] .cover::after{display:none}
+html[data-style="net"] #hero-net{position:absolute;right:16px;top:60px;width:560px;height:600px}
+html[data-style="net"] #s08 .body{padding-right:0}
+html[data-style="net"] #s08 .eq{text-align:left;background:transparent;border:0;padding:0;margin-bottom:2px}
+html[data-style="net"] #s08 .eq .main{font-size:15px;line-height:1.5;color:var(--muted)}
+html[data-style="net"] #s08 .grid3{display:none}
+html[data-style="net"] #model-net{position:absolute;right:24px;top:84px;width:660px;height:470px}
+html[data-style="net"] #s08 .body{padding-right:680px}
+html[data-style="net"] #s08 .strip{margin-top:auto;max-width:520px}
+html[data-style="net"] #s07 .grid3{display:none}
+html[data-style="net"] #corr-net{height:150px;margin-top:2px}
+
 @media print{
   @page{size:1280px 720px;margin:0}
   /* a dark screen deck must not become a dark handout */
   html[data-style]{--bg:#ffffff;--ink:#12212e;--ink2:#33415c;--muted:#5a6b7b;--faint:#8a99a8;
     --line:#dbe3ec;--card:#f4f7fa;--card2:#eef2f7}
-  html[data-style="lab"]{--accent:#0f7b6c;--accent-soft:#e6f2ef;--accent-line:#cfe6e0;--accent-dark:#0b5c51;
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]){--accent:#0f7b6c;--accent-soft:#e6f2ef;--accent-line:#cfe6e0;--accent-dark:#0b5c51;
     --accent-mid:#7fbdb1;--accent-soft2:#dbe9e5;--accent-light:#38b2a0;--track:#e7edf3;
     --pos:#0f7b6c;--neg:#c8523f;--nbar:#b9c6d4}
-  html[data-style="lab"] body{background:#fff}
-  html[data-style="lab"] #stage{box-shadow:none}
-  html[data-style="lab"] .card,html[data-style="lab"] .stat,html[data-style="lab"] .icard{background:#f4f7fa;border-color:#dbe3ec}
-  html[data-style="lab"] .strip{background:#e6f2ef;border-color:#cfe6e0;color:#0b5c51}
-  html[data-style="lab"] .strip b{color:#0b5c51}
-  html[data-style="lab"] .chips span{background:#fff;border-color:#dbe3ec;color:#33415c}
-  html[data-style="lab"] .figcap{background:#f4f7fa;color:#5a6b7b;border-top-color:#dbe3ec}
-  html[data-style="lab"] table.coef td{border-bottom-color:#edf1f6}
-  html[data-style="lab"] table.coef tr.hl td{background:#e6f2ef}
-  html[data-style="lab"] .legend div{color:#33415c}
-  html[data-style="lab"] .bar .track{background:#eef2f7}
-  html[data-style="lab"] #chrome{border-top-color:#eef2f6}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) body{background:#fff}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) #stage{box-shadow:none}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .card,:is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .stat,:is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .icard{background:#f4f7fa;border-color:#dbe3ec}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .strip{background:#e6f2ef;border-color:#cfe6e0;color:#0b5c51}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .strip b{color:#0b5c51}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .chips span{background:#fff;border-color:#dbe3ec;color:#33415c}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .figcap{background:#f4f7fa;color:#5a6b7b;border-top-color:#dbe3ec}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) table.coef td{border-bottom-color:#edf1f6}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) table.coef tr.hl td{background:#e6f2ef}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .legend div{color:#33415c}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) .bar .track{background:#eef2f7}
+  :is(html[data-style="lab"],html[data-style="mag"],html[data-style="net"]) #chrome{border-top-color:#eef2f6}
   #themebar{display:none!important}
   html,body{overflow:visible;background:#fff;height:auto}
   #hint,#progress{display:none}
@@ -307,6 +472,7 @@ html[data-style="minimal"] #chrome{border-top:1px solid var(--line)}
     <div class="eyebrow" data-a style="--d:60ms">Multiple Linear Regression · Data Analysis</div>
     <h1 data-a style="--d:130ms;max-width:940px;margin-top:12px">ปัจจัยที่มีผลต่อ<br>คะแนนสอบปลายภาค (G3)</h1>
     <p class="sub" data-a style="--d:210ms;margin-top:18px;max-width:820px">ชุดข้อมูลนักเรียนระดับประถม–มัธยม วิชาภาษาโปรตุเกส · โรงเรียน Gabriel Pereira และ Mousinho da Silveira · ประเทศโปรตุเกส · ปี 2008</p>
+    <div class="netwrap" id="hero-net"></div>
     <div class="members" data-a style="--d:360ms">
       <div>นายธนกร ปานะอำไพ<span>680710875</span></div>
       <div>นายธนิทธิ เรืองด้วง<span>680710202</span></div>
@@ -483,6 +649,7 @@ html[data-style="minimal"] #chrome{border-top:1px solid var(--line)}
           <div class="figcap">corrplot ของเมทริกซ์สหสัมพันธ์</div>
         </div>
       </div>
+      <div class="netwrap" id="corr-net"></div>
       <div class="grid3" data-a style="--d:320ms">
         <div class="card"><h3 style="font-size:15px">r(G3, age) = −0.11</h3><p class="sub" style="font-size:13px;margin-top:5px">ทิศทางลบ ระดับอ่อนมาก · อายุมากขึ้น คะแนนมีแนวโน้มลดลงเล็กน้อย</p></div>
         <div class="card"><h3 style="font-size:15px">r(G3, absences) = −0.09</h3><p class="sub" style="font-size:13px;margin-top:5px">ทิศทางลบ ระดับอ่อนมาก · ขาดเรียนมากขึ้น คะแนนมีแนวโน้มลดลงเล็กน้อย</p></div>
@@ -499,6 +666,7 @@ html[data-style="minimal"] #chrome{border-top:1px solid var(--line)}
       <div class="rule" data-a style="--d:120ms"></div>
     </div>
     <div class="body spread">
+      <div class="netwrap" id="model-net"></div>
       <div class="eq" data-a style="--d:180ms">
         <div class="main"><em>G3</em><sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>school<sub>i</sub> + β<sub>2</sub>sex<sub>i</sub> + β<sub>3</sub>age<sub>i</sub> + β<sub>4</sub>Pstatus<sub>i</sub> + β<sub>5</sub>studytime<sub>i</sub><br>
         + β<sub>6</sub>failures<sub>i</sub> + β<sub>7</sub>famsup<sub>i</sub> + β<sub>8</sub>paid<sub>i</sub> + β<sub>9</sub>activities<sub>i</sub> + β<sub>10</sub>higher<sub>i</sub> + β<sub>11</sub>absences<sub>i</sub> + ε<sub>i</sub></div>
@@ -692,7 +860,7 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (STILL) document.body.classList.add('still');
 const THEME_LABELS = {teal:'เขียวอมฟ้า', navy:'กรมท่า', plum:'ม่วง', forest:'เขียวเข้ม', ink:'เทา–เหลืองอำพัน'};
 const STYLE_LABELS = {classic:'คลาสสิก (ปัจจุบัน)', paper:'วิชาการ · วารสาร', lab:'ห้องแล็บ (พื้นเข้ม)',
-                      card:'การ์ดสมัยใหม่', minimal:'มินิมอล ขาวล้วน'};
+                      card:'การ์ดสมัยใหม่', minimal:'มินิมอล ขาวล้วน', mag:'นิตยสาร (จัดวางใหม่)', net:'แผนผังเชื่อมโยง (ใหม่)'};
 let curStyle = STYLE_LABELS[params.get('style')] ? params.get('style') : (document.documentElement.dataset.style || 'classic');
 function applyStyle(name) {
   if (!STYLE_LABELS[name]) return;
@@ -781,6 +949,64 @@ const BARS = (function buildBars() {
     host.appendChild(el);
   });
   return rows.length;
+})();
+
+/* ================= network renderers ================= */
+function netSVG(host, rows, opts) {
+  if (!host) return;
+  const o = Object.assign({w: 560, h: 560, core: 30, nr: 7, maxw: 7, labels: true, pad: 46}, opts || {});
+  const cx = o.w / 2, cy = o.h / 2, R = Math.min(o.w, o.h) / 2 - o.pad;
+  const MAXB = 3.4;
+  let out = '<svg viewBox="0 0 ' + o.w + ' ' + o.h + '">';
+  rows.forEach((r, i) => {
+    const a = (i / rows.length) * Math.PI * 2 - Math.PI / 2;
+    const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
+    const cls = r.pv < 0.05 ? (r.bv < 0 ? 'neg' : 'pos') : 'ns';
+    const wdt = o.minw + Math.min(Math.abs(r.bv) / MAXB, 1) * o.maxw;
+    out += '<line class="edge ' + cls + '" x1="' + cx + '" y1="' + cy + '" x2="' + x.toFixed(1) + '" y2="' + y.toFixed(1) +
+      '" stroke-width="' + wdt.toFixed(1) + '" opacity="' + (r.pv < 0.05 ? 0.95 : 0.5) + '"/>';
+    out += '<circle class="nd ' + cls + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + o.nr + '"/>';
+    if (o.labels) {
+      const lx = cx + Math.cos(a) * (R + 17), ly = cy + Math.sin(a) * (R + 21);
+      const ca = Math.cos(a);
+      const anchor = Math.abs(ca) < 0.35 ? 'middle' : (ca > 0 ? 'start' : 'end');
+      out += '<text class="nlab" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor + '">' + r.n + '</text>';
+    }
+  });
+  out += '<circle class="core" cx="' + cx + '" cy="' + cy + '" r="' + o.core + '"/>';
+  out += '<text class="corelab" x="' + cx + '" y="' + (cy + 5) + '" text-anchor="middle">G3</text></svg>';
+  host.innerHTML = out;
+  if (o.legend) {
+    const d = document.createElement('div');
+    d.className = 'netlegend';
+    d.textContent = o.legend;
+    host.appendChild(d);
+  }
+}
+(function drawNets() {
+  const preds = DATA.coef.filter(r => r.n !== 'Intercept');
+  netSVG(document.getElementById('hero-net'), preds, {w: 560, h: 600, core: 34, nr: 6, maxw: 6, minw: 0.8, labels: false});
+  netSVG(document.getElementById('model-net'), preds, {w: 660, h: 470, core: 32, nr: 7, maxw: 9, minw: 1, labels: true, pad: 56,
+    legend: 'อ่านกราฟ: วงกลมกลาง = คะแนนปลายภาค G3 · เส้นยิ่งหนา = ผลยิ่งแรง (|β|) · เขียว = ผลบวก · แดง = ผลลบ · เส้นประ = ไม่มีนัยสำคัญทางสถิติ'});
+  // correlation network (three real r values from the report)
+  const corr = [{n: 'age', v: -0.11}, {n: 'absences', v: -0.09}];
+  const host = document.getElementById('corr-net');
+  if (host) {
+    const w = 1160, h = 150, cx = w / 2, cy = h / 2, ring = 92;
+    let o = '<svg viewBox="0 0 ' + w + ' ' + h + '">';
+    corr.forEach((c, i) => {
+      const x = cx + (i === 0 ? -ring * 2.6 : ring * 2.6);
+      const cls = c.v < 0 ? 'neg' : 'pos';
+      o += '<line class="edge ' + cls + '" x1="' + (cx + (i === 0 ? -26 : 26)) + '" y1="' + cy + '" x2="' + x + '" y2="' + cy +
+        '" stroke-width="' + (1 + Math.abs(c.v) * 30).toFixed(1) + '" opacity=".9"/>';
+      o += '<circle class="nd ' + cls + '" cx="' + x + '" cy="' + cy + '" r="10"/>';
+      o += '<text class="nlab" x="' + x + '" y="' + (cy + 30) + '" text-anchor="middle">' + c.n + '</text>';
+      o += '<text class="rlab" x="' + x + '" y="' + (cy - 22) + '" text-anchor="middle">r = ' + c.v.toFixed(2) + '</text>';
+    });
+    o += '<circle class="core" cx="' + cx + '" cy="' + cy + '" r="26"/>';
+    o += '<text class="corelab" x="' + cx + '" y="' + (cy + 5) + '" text-anchor="middle">G3</text></svg>';
+    host.innerHTML = o;
+  }
 })();
 
 /* ================= count-up ================= */
@@ -891,6 +1117,8 @@ if (AUDIT) {
       };
       s.querySelectorAll('*').forEach(el => {
         if (el.id === 'audit') return;
+        // .netwrap layers are deliberately placed inside the slide's padding box
+        if (el.closest && el.closest('.netwrap')) return;
         const cs = getComputedStyle(el);
         if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') return;
         const r = el.getBoundingClientRect();
@@ -904,11 +1132,19 @@ if (AUDIT) {
       });
     });
     $('#audit').textContent = 'AUDIT_START\n' + out.join('\n') + '\nAUDIT_END n=' + out.length;
+    const fontsState = (document.fonts && document.fonts.status) || 'n/a';
     document.title = 'AUDIT ' + out.length + ' issues · ' + slides.length + ' slides · vp ' + innerWidth + 'x' + innerHeight +
-      ' · scale ' + (slides[0].getBoundingClientRect().width / 1280).toFixed(3);
+      ' · scale ' + (slides[0].getBoundingClientRect().width / 1280).toFixed(3) + ' · fonts=' + fontsState;
+    $('#audit').textContent += '\nfonts=' + fontsState;
   };
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else run();
-  setTimeout(run, 1200);
+  // Only measure once the webfonts are actually applied, otherwise fallback metrics
+  // produce phantom overflow (and a flaky verdict).
+  const guarded = () => {
+    if (document.fonts && document.fonts.status !== 'loaded') { document.fonts.ready.then(guarded); return; }
+    run();
+  };
+  guarded();
+  setTimeout(guarded, 1500);
 }
 </script>
 </body>
